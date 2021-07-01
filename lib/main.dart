@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:samba_pos_test/service.dart';
+import 'package:samba_pos_test/providers/yaml_service.dart';
 import 'package:samba_pos_test/views/menu_page.dart';
 
 void main() {

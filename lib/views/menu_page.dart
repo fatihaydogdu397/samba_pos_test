@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:samba_pos_test/service.dart';
+import 'package:samba_pos_test/providers/yaml_service.dart';
 import 'package:samba_pos_test/views/category_page.dart';
 import 'package:provider/provider.dart';
 
@@ -22,12 +22,13 @@ class _MenuPageState extends State<MenuPage> {
     final provider = context.watch<YamlService>();
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.red[900],
         centerTitle: true,
         title: Text("Siparişinizi Oluşturun"),
       ),
-      body: ListView.separated(
+      body: ListView.builder(
         itemBuilder: (context, index) {
-          var i = provider.menus. elementAt(index);
+          var i = provider.menus.elementAt(index);
 
           return InkWell(
             onTap: () {
@@ -41,6 +42,7 @@ class _MenuPageState extends State<MenuPage> {
               );
             },
             child: Container(
+              height: 100,
                 padding: EdgeInsets.all(8),
                 child: Stack(
                   alignment: Alignment.center,
@@ -48,7 +50,7 @@ class _MenuPageState extends State<MenuPage> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(15),
                       child: Image(
-                        width: MediaQuery.of(context).size.width * 0.9,
+                        width: MediaQuery.of(context).size.width ,
                         fit: BoxFit.cover,
                         image: AssetImage("${i.image}"),
                       ),
@@ -66,11 +68,7 @@ class _MenuPageState extends State<MenuPage> {
                 )),
           );
         },
-        separatorBuilder: (context, index) {
-          return Divider(
-            color: Colors.black,
-          );
-        },
+        
         itemCount: provider.menus?.length ?? 0,
       ),
     );

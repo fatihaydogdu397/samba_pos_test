@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:samba_pos_test/model/yaml_data_model.dart';
 import 'package:samba_pos_test/views/submenus_page.dart';
-
-import '../service.dart';
+import 'package:provider/provider.dart';
+import '../providers/yaml_service.dart';
 
 class CategoryPage extends StatefulWidget {
   final Item item;
@@ -15,26 +15,32 @@ class CategoryPage extends StatefulWidget {
 class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(
-        
+        backgroundColor: Colors.red[900],
         centerTitle: true,
         title: Text("${widget.item.name}"),
       ),
-      body: ListView.separated(
+      body: ListView.builder(
         itemBuilder: (context, index) {
           var i = widget.item.items.elementAt(index);
           return InkWell(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SubmenusPage(item: i,),
-                ),
-              );
+              var sMenusLength =
+                  context.read<YamlService>().getSubmenuItems(i.subMenus);
+              if ((sMenusLength.length ?? 0) > 0) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SubmenusPage(
+                      item: i,
+                    ),
+                  ),
+                );
+              }
             },
             child: Container(
+                height: 100,
                 padding: EdgeInsets.all(8),
                 child: Stack(
                   alignment: Alignment.center,
@@ -42,7 +48,7 @@ class _CategoryPageState extends State<CategoryPage> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(15),
                       child: Image(
-                        width: MediaQuery.of(context).size.width * 0.9,
+                        width: MediaQuery.of(context).size.width,
                         fit: BoxFit.cover,
                         image: AssetImage("${i.image}"),
                       ),
@@ -58,11 +64,6 @@ class _CategoryPageState extends State<CategoryPage> {
                     ),
                   ],
                 )),
-          );
-        },
-        separatorBuilder: (context, index) {
-          return Divider(
-            color: Colors.black,
           );
         },
         itemCount: widget.item?.items?.length ?? 0,

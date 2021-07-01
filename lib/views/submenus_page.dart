@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:samba_pos_test/model/yaml_data_model.dart';
 import 'package:provider/provider.dart';
-import 'package:samba_pos_test/service.dart';
+import 'package:samba_pos_test/providers/yaml_service.dart';
 
 class SubmenusPage extends StatefulWidget {
   final Item item;
@@ -30,17 +30,16 @@ class _SubmenusPageState extends State<SubmenusPage> {
   @override
   Widget build(BuildContext context) {
     print(selections);
-
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.red[900],
         centerTitle: true,
-        title: Text("asfd"),
+        title: Text("${widget.item.caption}"),
       ),
       body: ListView.separated(
         shrinkWrap: true,
         itemBuilder: (_, index) {
           var i = subMenu.elementAt(index);
-
           return Column(
             children: [
               Padding(
@@ -103,3 +102,4 @@ class _SubmenusPageState extends State<SubmenusPage> {
     );
   }
 }
+
