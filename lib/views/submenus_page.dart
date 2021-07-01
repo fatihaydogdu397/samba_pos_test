@@ -46,7 +46,7 @@ class _SubmenusPageState extends State<SubmenusPage> {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   "${i.description}",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color:Colors.red[900]),
                 ),
               ),
               ListView.builder(
