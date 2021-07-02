@@ -1,12 +1,10 @@
 import 'dart:developer';
 
-import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:samba_pos_test/model/yaml_data_model.dart';
 import 'package:yaml/yaml.dart';
 import 'dart:convert';
 import "package:flutter/services.dart" as s;
-import 'package:provider/provider.dart';
 
 class YamlService with ChangeNotifier {
   YamlDataModel data;

@@ -45,7 +45,6 @@ class _MenuPageState extends State<MenuPage> {
               height: 100,
                 padding: EdgeInsets.all(8),
                 child: Stack(
-                  alignment: Alignment.center,
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(15),
@@ -55,14 +54,17 @@ class _MenuPageState extends State<MenuPage> {
                         image: AssetImage("${i.image}"),
                       ),
                     ),
-                    Material(
-                      elevation: 5,
-                      color: Colors.transparent,
-                      child: Text("${i.name}",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                          )),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Material(
+                        elevation: 5,
+                        color: Colors.transparent,
+                        child: Text("${i.name}",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                            )),
+                      ),
                     ),
                   ],
                 )),

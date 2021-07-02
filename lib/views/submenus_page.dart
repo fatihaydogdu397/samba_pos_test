@@ -72,7 +72,7 @@ class _SubmenusPageState extends State<SubmenusPage> {
                             Expanded(
                               child: RadioListTile<int>(
                                 title: Text("${k.name}"),
-                                subtitle: Text("${k?.price ?? 0}"),
+                                subtitle: Text("${k?.price ?? 0} ₺"),
                                 controlAffinity:
                                     ListTileControlAffinity.trailing,
                                 value: aIndex,

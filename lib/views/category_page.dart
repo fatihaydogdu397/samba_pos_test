@@ -43,7 +43,7 @@ class _CategoryPageState extends State<CategoryPage> {
                 height: 100,
                 padding: EdgeInsets.all(8),
                 child: Stack(
-                  alignment: Alignment.center,
+                  // alignment: Alignment.center,
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(15),
@@ -53,14 +53,33 @@ class _CategoryPageState extends State<CategoryPage> {
                         image: AssetImage("${i.image}"),
                       ),
                     ),
-                    Material(
-                      elevation: 5,
-                      color: Colors.transparent,
-                      child: Text("${i.name}",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                          )),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Material(
+                        elevation: 5,
+                        color: Colors.transparent,
+                        child: Text("${i.name}",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                            )),
+                      ),
+                    ), 
+                    Positioned(
+                      bottom: 2,
+                      right: 0,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Material(
+                          elevation: 5,
+                          color: Colors.transparent,
+                          child: Text("${i.price??' '} ₺",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                              )),
+                        ),
+                      ),
                     ),
                   ],
                 )),
